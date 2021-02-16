@@ -1,0 +1,80 @@
+package com.company;
+
+class Anzeigen {
+
+	public static int spieleranzahl() throws IOException {					//Spielmodus wird abgefragt (1 oder 2 Spieler)
+        System.out.println("Wieviel Spieler sind Sie? (1 oder 2)");
+        comp = Integer.parseInt(input.readLine());
+		return comp;
+    }
+	public static void erklaerung() {										//Spielerklärung wird am Anfang einmal angezeigt
+        String rand = "___________________";
+        System.out.println(rand);
+        System.out.println("|  1  |  2  |  3  |");
+        System.out.println(rand);
+        System.out.println("|  4  |  5  |  6  |");
+        System.out.println(rand);
+        System.out.println("|  7  |  8  |  9  |");
+        System.out.println(rand);
+        System.out.println();
+        System.out.println("Player1=X");
+        System.out.println("Player2=0");
+		System.out.println("Um ein Zeichen zu setzten muss man die entsprechende Zahl eingeben!");
+    }
+	
+	public static void spielbrett(int[] board){								//Spielbrett wird angezeigt
+			String rand = "___________________";
+            for (int i = 0; i< board.length -1; i=i+3) {
+				System.out.println(rand);
+                System.out.print("|  " + (board[i] == 0 ? "X" : "O") + "  |  " + (board[(i+1)] == 0 ? "X" : "O") + "  |  " + (board[(i+2)] == 0 ? "X" : "O") + "  |));
+                }
+            }
+			System.out.println(rand);
+	}
+	public static int vorspielzug(int counter){								//Kommt vor jedem neuen Spielzug
+		String player=" ";
+		if(counter % 2==0){
+			player="Player 2";
+			}
+		else{
+			player="Player 1";
+			}
+			
+		System.out.println("Als nächstes ist "+player);
+        System.out.println("Geben Sie ein wo Sie das Zeichen setzen wollen:");
+        i = Integer.parseInt(input.readLine());
+		return i;
+	}
+	public static void gewinner(int counter){								//Zeigt den Gewinner oder Unentschieden an
+		if(counter==9){
+			System.out.println("Das Spiel geht unentschieden aus!");
+		}
+		else if(counter%2==0){
+			System.out.println("Player 2 hat gewonnen!");
+            System.out.println("Herzlichen Glückwunsch");
+		}
+		else{
+			System.out.println("Player 1 hat gewonnen!");
+            System.out.println("Herzlichen Glückwunsch");
+		
+		}
+		System.exit(0);
+	}
+	public static void spielzugsetzen(int i; int[] board; counter){			//Spielzug wird auf dem Spielbrett eingetragen
+		int symbol;
+		i--;
+		if (counter%2==0){
+			symbol=1;
+		}
+		else{
+			symbol=0;
+		}
+		board[i]=symbol;
+	}
+		public static void zahlfehler(int i){								//Zahl liegt nicht zwischen 1 & 9.
+			System.out.println("Die eingegebene Zahl liegt nicht zwischen 1 & 9!");
+			i=vorspielzug(counter);
+			Checks.zahlzwischen(i);
+	}
+	
+}

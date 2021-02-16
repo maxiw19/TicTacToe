@@ -1,0 +1,59 @@
+package com.company;
+
+class Checks {
+	public static void endcheck(int[] board, counter) {
+		int symbol;
+		if (counter%2==0){
+			symbol=1;
+		}
+		else{
+			symbol=0;
+		}
+		if(eins.equals(symbol)&&zwei.equals(symbol)&&drei.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(vier.equals(symbol)&&fünf.equals(symbol)&&sechs.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(sieben.equals(symbol)&&acht.equals(symbol)&&neun.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(eins.equals(symbol)&&fünf.equals(symbol)&&neun.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(drei.equals(symbol)&&fünf.equals(symbol)&&sieben.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(zwei.equals(symbol)&&fünf.equals(symbol)&&acht.equals(symbol)){
+            Anzeige.gewinner(counter);
+        }
+        else if(counter==9){
+            Anzeige.gewinner(counter);
+        }
+	}
+	
+	public static int feldfrei(int i,int[] board){
+		int a=i--;
+		if(board[a]!=""){
+			while(board[a]!=""){
+				System.out.println("Dieses Feld ist nicht frei, bitte wählen Sie ein anderes aus");
+				a=Anzeige.vorspielzug();
+			}
+			return a;
+		}
+		else{
+			return a;
+		}
+	}
+	
+	public static int zahlzwischen(int i){
+		if(i<1){
+			Anzeige.zahlfehler(i);
+		}
+		else if(i>9){
+			Anzeige.zahlfehler(i);
+		}
+		return i;
+	}
+
+}

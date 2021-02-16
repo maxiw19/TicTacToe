@@ -1,0 +1,17 @@
+package com.company;
+
+class Fehler {
+	public static void fehler1{						//Es ist der 1.Zug des Computers.
+		System.out.println("Fehlercode: 1");
+		System.exit(0);
+	}
+	public static void fehler2{						//Computer will auf die 5 setzten obwohl schon X.Zug ist.
+		System.out.println("Fehlercode: 2");
+		System.exit(0);
+	}
+	public static void fehler3{						//Computer hat sich für keinen Zug entscheiden können.
+		System.out.println("Fehlercode: 3");
+		System.exit(0);
+	}
+	
+}

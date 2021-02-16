@@ -1,0 +1,171 @@
+package com.company;
+
+import java.util.Random;
+
+public class Computer {
+    public static int computer(int[] board;int counter) {                                //Spielzüge des Computers
+        int compzug=0;
+		Random zufall = new Random();
+        int zufallsZahl = zufall.nextInt(3);
+        zufallsZahl++;
+        
+        if (counter == 2) {                                        //Setzten des ersten Computerzuges.
+            if (board[4]== 0) {
+                if (zufallsZahl == 1) {
+                    compzug = 1;
+                } else if (zufallsZahl == 2) {
+                    compzug = 3;
+                } else if (zufallsZahl == 3) {
+                    compzug = 7;
+                } else if (zufallsZahl == 4) {
+                    compzug = 9;
+                }
+            } else if(board[4]=="") {
+                compzug = 5;
+            }
+			else{
+				Fehler.fehler1();								//Fehler1
+			}
+        }
+        else {
+           if(board[0]==board[1]||board[1]==board[2]){			//Zeile 1
+			if(board[0]==board[2]){
+			}
+			else if(board[0]==""){
+				compzug=1;
+			}
+			else if(board[1]==""){
+				compzug=2;
+			}
+			else if(board[2]==""){
+				compzug=3;
+			}
+		   }
+		   else if(board[3]==board[4]||board[4]==board[5]){			//Zeile 2
+			if(board[3]==board[5]){
+			}
+			else if(board[3]==""){
+				compzug=4;
+			}
+			else if(board[4]==""){
+				Fehler.fehler2();									//Fehler2
+			}
+			else if(board[5]==""){
+				compzug=6;
+			}
+		   }
+		   else if(board[6]==board[7]||board[7]==board[8]){			//Zeile 3
+			if(board[6]==board[8]){
+			}
+			else if(board[6]==""){
+				compzug=7;
+			}
+			else if(board[7]==""){
+				compzug=8;
+			}
+			else if(board[8]==""){
+				compzug=9;
+			}
+		   }
+		   else if(board[0]==board[4]||board[4]==board[8]){			//Diagonal 1
+			if(board[0]==board[8]){
+			}
+			else if(board[0]==""){
+				compzug=1;
+			}
+			else if(board[4]==""){
+				Fehler.fehler2();
+			}
+			else if(board[8]==""){
+				compzug=9;
+			}
+		   }
+		   else if(board[2]==board[4]||board[4]==board[6]){			//Diagonal 2
+			if(board[2]==board[6]){
+			}
+			else if(board[2]==""){
+				compzug=3;
+			}
+			else if(board[4]==""){
+				Fehler.fehler2();									//Fehler2
+			}
+			else if(board[6]==""){
+				compzug=7;
+			}
+		   }
+		   else if(board[0]==board[3]||board[3]==board[6]){			//Spalte 1
+			if(board[0]==board[6]){
+			}
+			else if(board[0]==""){
+				compzug=1;
+			}
+			else if(board[3]==""){
+				compzug=4;
+			}
+			else if(board[6]==""){
+				compzug=7;
+			}
+		   }
+		   else if(board[1]==board[4]||board[4]==board[7]){			//Spalte 2
+			if(board[1]==board[7]){
+			}
+			else if(board[1]==""){
+				compzug=2;
+			}
+			else if(board[4]==""){
+				Fehler.fehler2();									//Fehler2
+			}
+			else if(board[7]==""){
+				compzug=8;
+			}
+		   }
+		   else if(board[2]==board[5]||board[5]==board[8]){			//Spalte 3
+			if(board[2]==board[8]){
+			}
+			else if(board[2]==""){
+				compzug=3;
+			}
+			else if(board[5]==""){
+				compzug=6;
+			}
+			else if(board[8]==""){
+				compzug=9;
+			}
+		   }
+		   else if(board[0]==""){
+			compzug=1;
+			}
+		   else if(board[1]==""){
+			compzug=2;
+			}
+		   else if(board[2]==""){
+			compzug=3;
+			}
+		   else if(board[3]==""){
+			compzug=4;
+			}
+		   else if(board[4]==""){
+			Fehler.fehler2();									//Fehler2
+			}
+		   else if(board[5]==""){
+			compzug=6;
+			}
+		   else if(board[6]==""){
+			compzug=7;
+			}
+		   else if(board[7]==""){
+			compzug=8;
+			}
+		   else if(board[8]==""){
+			compzug=9;
+			}
+        }
+		if(compzug==0){
+			Fehler.fehler3();
+		}
+		Anzeige.symbolsetzen(compzug;board;counter);			//Symbol wird gesetzt
+		counter++;												//Zugzähler wird erhöht
+        Checks.endcheck(board, counter);						//Prüfung ob es einen Gewinner gibt
+    }
+}
+}

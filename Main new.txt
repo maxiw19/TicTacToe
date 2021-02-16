@@ -1,0 +1,48 @@
+package com.company;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Objects;
+import java.util.Random;
+
+public class Main {
+
+    public static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    //Variablen
+	
+	int[] board = new int[9];					//Spielbrett
+	public static int i=0;						//Tastatureingabe um ein Symbol zu setzten
+    public static int counter=1;				//Zählt die Züge
+    public static int comp=2;					//1 oder 2 Spieler
+	
+	public static void main(String[] args) throws IOException {
+		comp=Anzeige.spieleranzahl();
+        Anzeige.erklärung();
+		if(comp==2){
+        	while(counter<10){
+            		ablauf();
+        	}
+		}
+		else if(comp==1){
+			while(counter<10){
+				if(counter%2!=0){
+					ablauf();
+				}
+				else{
+					computer();
+				}
+			}
+		}
+	}
+	
+	public static void ablauf() throws IOException {
+		Anzeige.spielbrett(board);
+		i=Anzeige.vorspielzug(counter);							//Spielzug wird abgefragt
+		i=Checks.zahlzwischen(i);								//Kontrolle ob die Zahl zwischen 1 und 9 liegt
+		i=Checks.feldfrei(i;board);								//Kontrolle ob das Feld noch frei ist
+		Anzeige.symbolsetzen(i;board;counter);					//Symbol wird gesetzt
+		counter++;												//Zugzähler wird erhöht
+        Checks.endcheck(board, counter);						//Prüfung ob es einen Gewinner gibt															
+    }
+}
